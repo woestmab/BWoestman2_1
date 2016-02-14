@@ -15,20 +15,29 @@
  */
 package com.brianwoestman.bWoestmanLab2_1;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import com.brianwoestman.bWoestmanLab2_1.fragments.R;
 
+import java.util.ArrayList;
+
 public class MainActivity extends FragmentActivity 
         implements HeadlinesFragment.OnHeadlineSelectedListener, StringConstants {
+    private SingletonIpsum singletonIpsum;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_headline);
+
+        loadPreferences();
 
         // Check whether the activity is using the layout version with
         // the fragment_container FrameLayout. If so, we must add the first fragment
@@ -52,6 +61,20 @@ public class MainActivity extends FragmentActivity
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, firstFragment).commit();
         }
+    }
+
+    /**
+     * Dispatch onStop() to all fragments.  Ensure all loaders are stopped.
+     */
+    @Override
+    protected void onStop()
+    {
+        singletonIpsum = SingletonIpsum.getSingletonIpsum();
+        ArrayList<Ipsum> ipsums = (ArrayList<Ipsum>) singletonIpsum.getIpsums();
+
+        savePreferences(PREF_KEY_1, ipsums.get(0).getContent());
+        savePreferences(PREF_KEY_2, ipsums.get(1).getContent());
+        super.onStop();
     }
 
     public void onArticleSelected(int position) {
@@ -85,5 +108,27 @@ public class MainActivity extends FragmentActivity
             // Commit the transaction
             transaction.commit();
         }
+    }
+
+    private void savePreferences(String key, String value)
+    {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    public void loadPreferences()
+    {
+        singletonIpsum = SingletonIpsum.getSingletonIpsum();
+        ArrayList<Ipsum> ipsums = (ArrayList<Ipsum>) singletonIpsum.getIpsums();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String article1 = sharedPreferences.getString(PREF_KEY_1, "default");
+        String article2 = sharedPreferences.getString(PREF_KEY_2, "default");
+
+        ipsums.get(0).setContent(article1);
+        ipsums.get(1).setContent(article2);
     }
 }

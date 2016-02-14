@@ -8,4 +8,6 @@ package com.brianwoestman.bWoestmanLab2_1;
 public interface StringConstants
 {
     public static final String TAG = "DEBUG";
+    final static String PREF_KEY_1 = "com.brianwoestman.bWoestmanLab2_1.article1";
+    final static String PREF_KEY_2 = "com.brianwoestman.bWoestmanLab2_1.article2";
 }

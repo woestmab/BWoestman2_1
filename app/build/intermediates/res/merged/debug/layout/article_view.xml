@@ -26,7 +26,7 @@ limitations under the License.
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/article"
         android:layout_width="match_parent"
-        android:layout_height="457dp"
+        android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="18sp" />
 

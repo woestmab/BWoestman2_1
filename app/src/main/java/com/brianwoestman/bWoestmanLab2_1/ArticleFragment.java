@@ -17,6 +17,7 @@ package com.brianwoestman.bWoestmanLab2_1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,6 @@ import java.util.ArrayList;
  */
 public class ArticleFragment extends Fragment implements StringConstants {
     final static String ARG_POSITION = "position";
-    final static String PREF_KEY = "com.brianwoestman.bWoestmanLab2_1.prefKey";
     int mCurrentPosition = -1;
 
     private EditText    mEtArticle;
@@ -132,6 +132,19 @@ public class ArticleFragment extends Fragment implements StringConstants {
         super.onPause();
     }
 
+    /**
+     * Called when the Fragment is no longer started.  This is generally
+     * tied to {link Activity#onStop() Activity.onStop} of the containing
+     * Activity's lifecycle.
+     */
+    @Override
+    public void onStop()
+    {
+        saveIpsum();
+        super.onStop();
+
+    }
+
     public void saveIpsum() {
         String content = mEtArticle.getText().toString();
 
@@ -139,8 +152,6 @@ public class ArticleFragment extends Fragment implements StringConstants {
         ArrayList<Ipsum> ipsums = (ArrayList) singleton.getIpsums();
 
         ipsums.get(mCurrentPosition).setContent(content);
-
-        saveSharedPreferences(Integer.toString(mCurrentPosition), content);
     }
 
     public void updateArticleView(int position) {
@@ -168,14 +179,5 @@ public class ArticleFragment extends Fragment implements StringConstants {
         transaction.replace(R.id.fragment_container, headlinesFragment)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    public void saveSharedPreferences (String key, String value)
-    {
-        SharedPreferences settings = getActivity().getSharedPreferences(PREF_KEY, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(key, value);
-        editor.commit();
-        Log.d(TAG, "saveSharedPreferences: complete");
     }
 }
