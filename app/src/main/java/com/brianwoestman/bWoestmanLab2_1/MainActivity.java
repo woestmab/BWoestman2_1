@@ -141,7 +141,9 @@ public class MainActivity extends FragmentActivity
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String article1 = sharedPreferences.getString(PREF_KEY_1, "default");
         String article2 = sharedPreferences.getString(PREF_KEY_2, "default");
-
+        if (article1.equals("default") && article2.equals("default")){
+            return;
+        }
         ipsums.get(0).setContent(article1);
         ipsums.get(1).setContent(article2);
     }

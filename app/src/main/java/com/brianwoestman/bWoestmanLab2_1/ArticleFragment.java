@@ -58,11 +58,14 @@ public class ArticleFragment extends Fragment implements StringConstants {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle bundle) {
+    public void onViewCreated(final View view, Bundle bundle) {
 
         mEtArticle  = (EditText)    view.findViewById(R.id.article);
         mBtnCancel  = (Button)      view.findViewById(R.id.btn_cancel);
         mBtnSave    = (Button)      view.findViewById(R.id.btn_save);
+
+        final ArticleFragment articleFrag = (ArticleFragment)
+                getActivity().getSupportFragmentManager().findFragmentById(R.id.article_fragment);
 
         mBtnCancel.setOnClickListener(new View.OnClickListener(){
 
@@ -87,7 +90,10 @@ public class ArticleFragment extends Fragment implements StringConstants {
             public void onClick(View v)
             {
                 saveIpsum();
-                returnToHeadlines();
+                if (articleFrag == null)
+                {
+                    returnToHeadlines();
+                }
             }
         });
 

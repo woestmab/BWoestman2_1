@@ -21,19 +21,22 @@ limitations under the License.
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    android:background="#c4d0fb">
+    android:background="#c4d0fb"
+              android:weightSum="1">
 
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/article"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+              android:layout_weight="1.02"
+              android:gravity="top"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="58dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"

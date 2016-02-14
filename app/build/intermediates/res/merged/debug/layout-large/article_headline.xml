@@ -18,7 +18,8 @@ limitations under the License.
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:tag="large">
 
     <fragment android:name="com.brianwoestman.bWoestmanLab2_1.HeadlinesFragment"
               android:id="@+id/headlines_fragment"
