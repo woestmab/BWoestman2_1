@@ -5,6 +5,11 @@ package com.brianwoestman.bWoestmanLab2_1;
  * Android Programming
  * We 5:30p - 9:20p
  */
+
+/**
+ * This interface holds constants for the app
+ */
+
 public interface StringConstants
 {
     public static final String TAG = "DEBUG";

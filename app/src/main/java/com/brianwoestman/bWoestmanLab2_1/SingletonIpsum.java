@@ -8,6 +8,14 @@ import java.util.List;
  * Android Programming
  * We 5:30p - 9:20p
  */
+
+/**
+ * This class is a singleton for the ipsum and it creates the ipsums when first
+ * instantiated
+ * @author Bdub
+ * @since 2/14/16
+ * @version 1.0
+ */
 public class SingletonIpsum {
 
     private static SingletonIpsum singletonIpsum;
@@ -43,6 +51,11 @@ public class SingletonIpsum {
 
     }
 
+    /**
+     * Gets singleton ipsum.
+     *
+     * @return the singleton ipsum
+     */
     public static SingletonIpsum getSingletonIpsum() {
         if (null == singletonIpsum) {
             ipsums = new ArrayList();
@@ -54,14 +67,29 @@ public class SingletonIpsum {
         return singletonIpsum;
     }
 
+    /**
+     * Get headlines string [ ].
+     *
+     * @return the string [ ]
+     */
     public static String[] getHeadlines() {
         return Headlines;
     }
 
+    /**
+     * Get articles string [ ].
+     *
+     * @return the string [ ]
+     */
     public static String[] getArticles() {
         return Articles;
     }
 
+    /**
+     * Gets ipsums.
+     *
+     * @return the ipsums
+     */
     public static List<Ipsum> getIpsums() {
         return ipsums;
     }

@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.brianwoestman.bWoestmanLab2_1;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 import com.brianwoestman.bWoestmanLab2_1.fragments.R;
 
@@ -77,6 +76,11 @@ public class MainActivity extends FragmentActivity
         super.onStop();
     }
 
+    /**
+     * This method switches to the article fragment when a headline is selected
+     * @param position
+     */
+
     public void onArticleSelected(int position) {
         // The user selected the headline of an article from the HeadlinesFragment
 
@@ -110,6 +114,12 @@ public class MainActivity extends FragmentActivity
         }
     }
 
+    /**
+     * This method saves the parameters as a shared preference pair
+     * @param key
+     * @param value
+     */
+
     private void savePreferences(String key, String value)
     {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -118,6 +128,10 @@ public class MainActivity extends FragmentActivity
         editor.putString(key, value);
         editor.commit();
     }
+
+    /**
+     * This method loads the shared preferences from an existing file
+     */
 
     public void loadPreferences()
     {
