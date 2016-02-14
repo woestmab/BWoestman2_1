@@ -37,6 +37,7 @@ public class MainActivity extends FragmentActivity
         setContentView(R.layout.article_headline);
 
         loadPreferences();
+        loadArticle();
 
         // Check whether the activity is using the layout version with
         // the fragment_container FrameLayout. If so, we must add the first fragment
@@ -146,5 +147,26 @@ public class MainActivity extends FragmentActivity
         }
         ipsums.get(0).setContent(article1);
         ipsums.get(1).setContent(article2);
+    }
+
+    /**
+     * Load article.
+     */
+    
+    public void loadArticle()
+    {
+
+        // Capture the article fragment from the activity layout
+        ArticleFragment articleFrag = (ArticleFragment)
+                getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+
+        if (articleFrag != null) {
+            // If article frag is available, we're in two-pane layout...
+
+            // Call a method in the ArticleFragment to update its content
+            articleFrag.updateArticleView(0);
+
+        }
+
     }
 }

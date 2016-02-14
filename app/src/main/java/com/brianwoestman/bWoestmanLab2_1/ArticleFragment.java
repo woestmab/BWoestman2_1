@@ -60,12 +60,17 @@ public class ArticleFragment extends Fragment implements StringConstants {
     @Override
     public void onViewCreated(final View view, Bundle bundle) {
 
+        final ArticleFragment articleFrag = (ArticleFragment)
+                getActivity().getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+
         mEtArticle  = (EditText)    view.findViewById(R.id.article);
         mBtnCancel  = (Button)      view.findViewById(R.id.btn_cancel);
         mBtnSave    = (Button)      view.findViewById(R.id.btn_save);
 
-        final ArticleFragment articleFrag = (ArticleFragment)
-                getActivity().getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+        if (articleFrag != null)
+        {
+            mBtnCancel.setVisibility(View.INVISIBLE);
+        }
 
         mBtnCancel.setOnClickListener(new View.OnClickListener(){
 
