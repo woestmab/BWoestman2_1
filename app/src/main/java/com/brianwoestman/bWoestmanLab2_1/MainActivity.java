@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
+import com.brianwoestman.bWoestmanLab2_1.fragments.R;
+
 public class MainActivity extends FragmentActivity 
-        implements HeadlinesFragment.OnHeadlineSelectedListener {
+        implements HeadlinesFragment.OnHeadlineSelectedListener, StringConstants {
 
     /** Called when the activity is first created. */
     @Override

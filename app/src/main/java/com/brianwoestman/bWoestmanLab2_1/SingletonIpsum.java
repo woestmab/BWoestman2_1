@@ -1,4 +1,4 @@
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +47,7 @@ public class SingletonIpsum {
         if (null == singletonIpsum) {
             ipsums = new ArrayList();
             singletonIpsum = new SingletonIpsum();
+
             ipsums.add(new Ipsum(Headlines[0], Articles[0]));
             ipsums.add(new Ipsum(Headlines[1], Articles[1]));
         }

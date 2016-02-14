@@ -39,18 +39,18 @@ limitations under the License.
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_cancel"
-            android:text="@string/str_cancel"/>
+            android:text="@string/cancel"/>
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/str_save"
+            android:text="@string/save"
             android:id="@+id/btn_save" />
 
     </LinearLayout>
 
-</LinearLayout><!-- From: file:/Users/Bdub/Dropbox/School/2016Spring/AdvAndroid/Labs/2.1/BWoestmanLab2.1/app/src/main/res/layout/article_view.xml -->
+</LinearLayout><!-- From: file:/Users/Bdub/Dropbox/School/2016Spring/AdvAndroid/labs/BWoestman2_1/app/src/main/res/layout/article_view.xml -->

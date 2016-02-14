@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1;
 
 import android.app.Activity;
 import android.os.Build;
@@ -22,6 +22,8 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.brianwoestman.bWoestmanLab2_1.fragments.R;
 
 public class HeadlinesFragment extends ListFragment {
     OnHeadlineSelectedListener mCallback;

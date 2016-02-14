@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1.fragments;
 
 public final class R {
     public static final class attr {
@@ -27,7 +27,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int str_cancel=0x7f040001;
-        public static final int str_save=0x7f040002;
+        public static final int cancel=0x7f040001;
+        public static final int save=0x7f040002;
     }
 }

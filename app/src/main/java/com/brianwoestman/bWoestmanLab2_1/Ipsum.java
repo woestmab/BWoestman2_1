@@ -1,4 +1,4 @@
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1;
 
 /**
  * Created by Brian Woestman on 2/6/16.

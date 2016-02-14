@@ -8,5 +8,5 @@ int id headlines_fragment 0x7f050001
 int layout article_headline 0x7f030000
 int layout article_view 0x7f030001
 int string app_name 0x7f040000
-int string str_cancel 0x7f040001
-int string str_save 0x7f040002
+int string cancel 0x7f040001
+int string save 0x7f040002

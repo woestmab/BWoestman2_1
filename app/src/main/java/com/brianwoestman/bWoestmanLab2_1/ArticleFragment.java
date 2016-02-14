@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.woestmanBrian.bWoestmanLab2_1.fragments;
+package com.brianwoestman.bWoestmanLab2_1;
 
-import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,10 +26,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.brianwoestman.bWoestmanLab2_1.fragments.R;
+
 import java.util.ArrayList;
 
+/**
+ * The type Article fragment.
+ */
 public class ArticleFragment extends Fragment implements StringConstants {
     final static String ARG_POSITION = "position";
+    final static String PREF_KEY = "com.brianwoestman.bWoestmanLab2_1.prefKey";
     int mCurrentPosition = -1;
 
     private EditText    mEtArticle;
@@ -104,6 +111,38 @@ public class ArticleFragment extends Fragment implements StringConstants {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Save the current article selection in case we need to recreate the fragment
+        outState.putInt(ARG_POSITION, mCurrentPosition);
+    }
+
+    /**
+     * Called when the Fragment is no longer resumed.  This is generally
+     * tied to {link Activity#onPause() Activity.onPause} of the containing
+     * Activity's lifecycle.
+     */
+
+    @Override
+    public void onPause()
+    {
+        saveIpsum();
+        super.onPause();
+    }
+
+    public void saveIpsum() {
+        String content = mEtArticle.getText().toString();
+
+        SingletonIpsum singleton = SingletonIpsum.getSingletonIpsum();
+        ArrayList<Ipsum> ipsums = (ArrayList) singleton.getIpsums();
+
+        ipsums.get(mCurrentPosition).setContent(content);
+
+        saveSharedPreferences(Integer.toString(mCurrentPosition), content);
+    }
+
     public void updateArticleView(int position) {
         EditText article = (EditText) getActivity().findViewById(R.id.article);
 
@@ -119,22 +158,6 @@ public class ArticleFragment extends Fragment implements StringConstants {
         mCurrentPosition = position;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        // Save the current article selection in case we need to recreate the fragment
-        outState.putInt(ARG_POSITION, mCurrentPosition);
-    }
-
-    public void saveIpsum() {
-        String content = mEtArticle.getText().toString();
-        SingletonIpsum singleton = SingletonIpsum.getSingletonIpsum();
-        ArrayList<Ipsum> ipsums = (ArrayList) singleton.getIpsums();
-
-        ipsums.get(mCurrentPosition).setContent(content);
-    }
-
     public void returnToHeadlines() {
 
         HeadlinesFragment headlinesFragment = new HeadlinesFragment();
@@ -145,5 +168,14 @@ public class ArticleFragment extends Fragment implements StringConstants {
         transaction.replace(R.id.fragment_container, headlinesFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void saveSharedPreferences (String key, String value)
+    {
+        SharedPreferences settings = getActivity().getSharedPreferences(PREF_KEY, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(key, value);
+        editor.commit();
+        Log.d(TAG, "saveSharedPreferences: complete");
     }
 }

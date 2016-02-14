@@ -1,7 +1,7 @@
 /**
  * Automatically generated file. DO NOT MODIFY
  */
-package com.woestmanBrian.bWoestmanLab2_1.fragments.test;
+package com.brianwoestman.bWoestmanLab2_1.fragments.test;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
